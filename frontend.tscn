@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://6416531rd4jc"]
+
+[ext_resource type="PackedScene" uid="uid://boupgtixoethg" path="res://my_ui.tscn" id="1_kougw"]
+[ext_resource type="Texture2D" uid="uid://byl7cqgrb3kkk" path="res://testing/Temple_Spring_Day.png" id="1_snmnr"]
+[ext_resource type="Script" path="res://scripts/CamelliaFrontend.cs" id="1_w5exk"]
+[ext_resource type="Texture2D" uid="uid://cnjcixajfo1v1" path="res://testing/syogatsu-cat.png" id="2_2fcqd"]
+
+[node name="Frontend" type="Node3D" node_paths=PackedStringArray("_dialogBox")]
+script = ExtResource("1_w5exk")
+_dialogBox = NodePath("CanvasLayer/MyUI/DialogBox")
+
+[node name="SceneRoot" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="SceneRoot"]
+texture = ExtResource("1_snmnr")
+
+[node name="Cat" type="Sprite3D" parent="SceneRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57, -1.73, 0.888)
+texture = ExtResource("2_2fcqd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MyUI" parent="CanvasLayer" instance=ExtResource("1_kougw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+projection = 1
+size = 7.5
+
+[editable path="CanvasLayer/MyUI"]

@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://boupgtixoethg"]
+[gd_scene load_steps=13 format=3 uid="uid://boupgtixoethg"]
 
-[ext_resource type="Script" path="res://scripts/CamelliaUi.cs" id="1_gw4b7"]
+[ext_resource type="Script" path="res://scripts/DialogBox.cs" id="2_cgq74"]
+[ext_resource type="Shader" path="res://shaders/dialog_bg.gdshader" id="2_sywm3"]
+[ext_resource type="FontFile" uid="uid://dao3ktsb0wdsj" path="res://fonts/SarasaGothicSC-Regular.ttf" id="3_04lr0"]
+[ext_resource type="Shader" path="res://shaders/letterbox.gdshader" id="4_60e2k"]
+[ext_resource type="FontFile" uid="uid://da1o6fnh0w65j" path="res://fonts/SarasaMonoSC-Regular.ttf" id="4_sxfak"]
+[ext_resource type="FontFile" uid="uid://3ja4gw1plhe8" path="res://fonts/SarasaGothicSC-Italic.ttf" id="5_616at"]
+[ext_resource type="Script" path="res://scripts/Letterbox.cs" id="5_gtmcy"]
+[ext_resource type="Texture2D" uid="uid://bjtj0yofuygov" path="res://textures/restricted.png" id="5_hjust"]
+[ext_resource type="FontFile" uid="uid://by1t2fn5djtwj" path="res://fonts/SarasaGothicSC-BoldItalic.ttf" id="6_o2ddk"]
+[ext_resource type="FontFile" uid="uid://di2vhqmbu63tw" path="res://fonts/SarasaGothicSC-Bold.ttf" id="7_tuph6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3j8jh"]
+shader = ExtResource("2_sywm3")
+shader_parameter/alt_color = Color(1, 0.901, 0.34, 1)
+shader_parameter/y_offset = 90.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmcum"]
+shader = ExtResource("4_60e2k")
+shader_parameter/screen_size = Vector2(0, 0)
+shader_parameter/h_thickness = null
+shader_parameter/size_offset = Vector4(100, 100, 0, 0)
+shader_parameter/pattern = ExtResource("5_hjust")
 
 [node name="MyUI" type="Control"]
 layout_mode = 3
@@ -9,4 +30,139 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gw4b7")
+
+[node name="DialogBox" type="ColorRect" parent="." node_paths=PackedStringArray("_flowText", "_charaName")]
+material = SubResource("ShaderMaterial_3j8jh")
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -455.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.2365, 0.346225, 0.55, 1)
+script = ExtResource("2_cgq74")
+_flowText = NodePath("ContentMargin/ContentLayout/TextMargin/DialogText")
+_charaName = NodePath("ContentMargin/ContentLayout/DialogHeader/CharaName")
+
+[node name="ContentMargin" type="MarginContainer" parent="DialogBox"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = 40.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 95
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 95
+theme_override_constants/margin_bottom = 50
+
+[node name="ContentLayout" type="VBoxContainer" parent="DialogBox/ContentMargin"]
+layout_mode = 2
+
+[node name="DialogHeader" type="HBoxContainer" parent="DialogBox/ContentMargin/ContentLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CharaName" type="RichTextLabel" parent="DialogBox/ContentMargin/ContentLayout/DialogHeader"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.466181, 0.466181, 0.466181, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("3_04lr0")
+theme_override_fonts/mono_font = ExtResource("4_sxfak")
+theme_override_fonts/italics_font = ExtResource("5_616at")
+theme_override_fonts/bold_italics_font = ExtResource("6_o2ddk")
+theme_override_fonts/bold_font = ExtResource("7_tuph6")
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+text = "欧阳小猫"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CharaNick" type="RichTextLabel" parent="DialogBox/ContentMargin/ContentLayout/DialogHeader"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(0.678944, 0.678944, 0.678944, 1)
+theme_override_colors/font_outline_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("3_04lr0")
+theme_override_fonts/mono_font = ExtResource("4_sxfak")
+theme_override_fonts/italics_font = ExtResource("5_616at")
+theme_override_fonts/bold_italics_font = ExtResource("6_o2ddk")
+theme_override_fonts/bold_font = ExtResource("7_tuph6")
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+text = "南宋"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="DecoContainer" type="Control" parent="DialogBox/ContentMargin/ContentLayout/DialogHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Deco" type="ColorRect" parent="DialogBox/ContentMargin/ContentLayout/DialogHeader/DecoContainer"]
+custom_minimum_size = Vector2(0, 2.38)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -11.0
+offset_bottom = -8.62
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(1, 1, 1, 0.392157)
+
+[node name="TextMargin" type="MarginContainer" parent="DialogBox/ContentMargin/ContentLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+
+[node name="DialogText" type="RichTextLabel" parent="DialogBox/ContentMargin/ContentLayout/TextMargin"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/line_separation = 9
+theme_override_fonts/normal_font = ExtResource("3_04lr0")
+theme_override_fonts/mono_font = ExtResource("4_sxfak")
+theme_override_fonts/italics_font = ExtResource("5_616at")
+theme_override_fonts/bold_italics_font = ExtResource("6_o2ddk")
+theme_override_fonts/bold_font = ExtResource("7_tuph6")
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[p align=fill]环滁皆山喵 。 其西南诸峰，林壑尤美。望之蔚然而深秀者，琅琊喵 。山行六七里，渐闻水声潺潺，而泻出于两峰之间者，让泉喵 。峰回路转，有亭翼然临于泉上者，醉翁亭喵 。作亭者谁？山之僧曰智仙喵 。名之者谁？太守自谓喵 。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁喵 。醉翁之意不在酒，在乎山水之间喵 。山水之乐，得之心而寓之酒喵 。"
+
+[node name="Letterbox" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_xmcum")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("5_gtmcy")
+_maxAspectRatio = 2.0
+_minAspectRatio = 1.0

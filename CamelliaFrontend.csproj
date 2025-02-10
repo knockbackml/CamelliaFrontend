@@ -6,6 +6,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CamelliaBridge" Version="0.0.1" />
+    <PackageReference Include="CamelliaBridge" Version="0.0.7" />
   </ItemGroup>
 </Project>
