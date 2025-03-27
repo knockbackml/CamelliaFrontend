@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://boupgtixoethg"]
+[gd_scene load_steps=14 format=3 uid="uid://boupgtixoethg"]
 
-[ext_resource type="Script" path="res://scripts/DialogBox.cs" id="2_cgq74"]
-[ext_resource type="Shader" path="res://shaders/dialog_bg.gdshader" id="2_sywm3"]
+[ext_resource type="Script" uid="uid://ypgidrb0hn2k" path="res://scripts/DialogBox.cs" id="2_cgq74"]
+[ext_resource type="Shader" uid="uid://tdbp2xjqmgwe" path="res://shaders/dialog_bg.gdshader" id="2_sywm3"]
 [ext_resource type="FontFile" uid="uid://dao3ktsb0wdsj" path="res://fonts/SarasaGothicSC-Regular.ttf" id="3_04lr0"]
-[ext_resource type="Shader" path="res://shaders/letterbox.gdshader" id="4_60e2k"]
+[ext_resource type="Shader" uid="uid://dsc7gjsh5jr34" path="res://shaders/letterbox.gdshader" id="4_60e2k"]
 [ext_resource type="FontFile" uid="uid://da1o6fnh0w65j" path="res://fonts/SarasaMonoSC-Regular.ttf" id="4_sxfak"]
 [ext_resource type="FontFile" uid="uid://3ja4gw1plhe8" path="res://fonts/SarasaGothicSC-Italic.ttf" id="5_616at"]
-[ext_resource type="Script" path="res://scripts/Letterbox.cs" id="5_gtmcy"]
+[ext_resource type="Script" uid="uid://bn830a2dh131d" path="res://scripts/Letterbox.cs" id="5_gtmcy"]
 [ext_resource type="Texture2D" uid="uid://bjtj0yofuygov" path="res://textures/restricted.png" id="5_hjust"]
 [ext_resource type="FontFile" uid="uid://by1t2fn5djtwj" path="res://fonts/SarasaGothicSC-BoldItalic.ttf" id="6_o2ddk"]
 [ext_resource type="FontFile" uid="uid://di2vhqmbu63tw" path="res://fonts/SarasaGothicSC-Bold.ttf" id="7_tuph6"]
+[ext_resource type="Script" uid="uid://ban1pwtjtgaqn" path="res://scripts/FancyTextLabel.cs" id="8_qr6c2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3j8jh"]
 shader = ExtResource("2_sywm3")
@@ -19,9 +20,9 @@ shader_parameter/y_offset = 90.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xmcum"]
 shader = ExtResource("4_60e2k")
 shader_parameter/screen_size = Vector2(0, 0)
-shader_parameter/h_thickness = null
-shader_parameter/size_offset = Vector4(100, 100, 0, 0)
+shader_parameter/h_thickness = 0.0
 shader_parameter/pattern = ExtResource("5_hjust")
+shader_parameter/size_offset = Vector4(100, 100, 0, 0)
 
 [node name="MyUI" type="Control"]
 layout_mode = 3
@@ -152,6 +153,7 @@ theme_override_font_sizes/normal_font_size = 28
 theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
 text = "[p align=fill]环滁皆山喵 。 其西南诸峰，林壑尤美。望之蔚然而深秀者，琅琊喵 。山行六七里，渐闻水声潺潺，而泻出于两峰之间者，让泉喵 。峰回路转，有亭翼然临于泉上者，醉翁亭喵 。作亭者谁？山之僧曰智仙喵 。名之者谁？太守自谓喵 。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁喵 。醉翁之意不在酒，在乎山水之间喵 。山水之乐，得之心而寓之酒喵 。"
+script = ExtResource("8_qr6c2")
 
 [node name="Letterbox" type="ColorRect" parent="."]
 visible = false
@@ -165,4 +167,3 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("5_gtmcy")
 _maxAspectRatio = 2.0
-_minAspectRatio = 1.0

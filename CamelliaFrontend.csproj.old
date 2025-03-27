@@ -1,9 +1,7 @@
-<Project Sdk="Godot.NET.Sdk/4.4.1-rc">
+<Project Sdk="Godot.NET.Sdk/4.3.1-rc">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <Configurations>ExportDebug;ExportRelease;Debug</Configurations>
-    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\CamelliaBackend\CamelliaBackend\CamelliaBackend.csproj" />

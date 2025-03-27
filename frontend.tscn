@@ -2,16 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://boupgtixoethg" path="res://my_ui.tscn" id="1_kougw"]
 [ext_resource type="Texture2D" uid="uid://byl7cqgrb3kkk" path="res://testing/Temple_Spring_Day.png" id="1_snmnr"]
-[ext_resource type="Script" path="res://scripts/CamelliaFrontend.cs" id="1_w5exk"]
+[ext_resource type="Script" uid="uid://b20sqxkshqpxn" path="res://scripts/CamelliaFrontend.cs" id="1_w5exk"]
 [ext_resource type="Texture2D" uid="uid://cnjcixajfo1v1" path="res://testing/syogatsu-cat.png" id="2_2fcqd"]
 
-[node name="Frontend" type="Node3D" node_paths=PackedStringArray("_dialogBox")]
+[node name="Frontend" type="Node3D" node_paths=PackedStringArray("_mainDialogCharacterName", "_mainDialogCharacterNick", "_mainDialogContent", "_sceneRoot")]
 script = ExtResource("1_w5exk")
-_dialogBox = NodePath("CanvasLayer/MyUI/DialogBox")
+_mainDialogCharacterName = NodePath("CanvasLayer/MyUI/DialogBox/ContentMargin/ContentLayout/DialogHeader/CharaName")
+_mainDialogCharacterNick = NodePath("CanvasLayer/MyUI/DialogBox/ContentMargin/ContentLayout/DialogHeader/CharaNick")
+_mainDialogContent = NodePath("CanvasLayer/MyUI/DialogBox/ContentMargin/ContentLayout/TextMargin/DialogText")
+_sceneRoot = NodePath("SceneRoot")
 
 [node name="SceneRoot" type="Node3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="SceneRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 texture = ExtResource("1_snmnr")
 
 [node name="Cat" type="Sprite3D" parent="SceneRoot"]
